@@ -1,0 +1,955 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "67013fd6-a3b6-4b07-988b-324f448235ef",
+        "name": "Intersection 245653232",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245653232
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8217366,
+          18.9143089
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "ab29eb08-9b40-46b3-b476-1b7b5b8c50ac",
+        "name": "Intersection 245653329",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245653329
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8236255,
+          18.9164885
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "3325a1b5-694c-48bd-b9a6-37334926f5de",
+        "name": "Intersection 245653413",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245653413
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8255542,
+          18.9187946
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "4262ca71-8841-4926-ad8e-8059bd18966c",
+        "name": "Intersection 245653464",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245653464
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8290725,
+          18.9189023
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "96e86fa5-8de0-456a-9904-fc42c29bdaca",
+        "name": "Intersection 245653613",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245653613
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8263833,
+          18.9210264
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "537de3cb-4209-4c28-aa75-d18a9392d9cd",
+        "name": "Intersection 245653633",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245653633
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8311822,
+          18.9218402
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "3928fb26-1c3b-4762-a38b-9818cec0562b",
+        "name": "Intersection 245653748",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245653748
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.832318,
+          18.9250427
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "b568961c-c96e-4ec0-8717-3f45e8644e43",
+        "name": "Intersection 245653753",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245653753
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8321085,
+          18.9250738
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "e55f39fa-70bd-4a50-85fa-9d7569bae766",
+        "name": "Intersection 245653757",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245653757
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8325481,
+          18.9252387
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "0f6a4817-7cb5-42a2-96c1-6e8c12438ffa",
+        "name": "Intersection 245653771",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245653771
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8319444,
+          18.9253612
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "da26c67a-e884-411a-bf3e-c75fb843014c",
+        "name": "Intersection 245653777",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245653777
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8325633,
+          18.9253039
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "4a79b3a8-ac78-401e-bba5-da94fcdac001",
+        "name": "Intersection 245653781",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245653781
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8319922,
+          18.9254921
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "a2da29a9-669c-4eea-9eb4-be438dee677f",
+        "name": "Intersection 245653783",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245653783
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8321943,
+          18.9256018
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "229f36f1-8277-40b6-a9ac-6d8c145069a7",
+        "name": "Intersection 245653820",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245653820
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8280343,
+          18.9263905
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "a8254abf-b8cd-49e2-b3ef-58fecb1ccbb6",
+        "name": "Intersection 245653830",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245653830
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8270585,
+          18.9264383
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "6999c975-3242-4fee-a009-627e5e74cf69",
+        "name": "Intersection 245653871",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245653871
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8216338,
+          18.9276036
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "70466573-2981-4b18-a9f8-b26c20852ddb",
+        "name": "Intersection 245653961",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245653961
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8281582,
+          18.9296322
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "75bb30a6-2852-4439-8653-09e4edfba783",
+        "name": "Intersection 245654041",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245654041
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8313162,
+          18.9318805
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "476fba13-33d7-4d86-b92e-f11d39b70ff2",
+        "name": "Intersection 245654108",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245654108
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8279884,
+          18.9328441
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "5d15d11a-7a41-452b-8036-098c5345dff4",
+        "name": "Intersection 245654172",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245654172
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.837098,
+          18.9344956
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "36e3e6a9-0db9-4044-9f5b-03e4216aed66",
+        "name": "Intersection 245654283",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245654283
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8308679,
+          18.9353852
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "6578a37d-72ba-4eec-a2ed-1883399b52f9",
+        "name": "Intersection 245654359",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245654359
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8273702,
+          18.9371755
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "48858010-57c9-42e4-aecc-cbcaacd03473",
+        "name": "Avtar Singh Bedi Chowk",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245654369
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8379744,
+          18.9382131
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "807aec5a-0449-4c17-86b4-bbb857bfc184",
+        "name": "Intersection 245654379",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245654379
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8359405,
+          18.938479
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8d0e700d-4259-4d27-b497-f68096a6dc64",
+        "name": "Intersection 245654381",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245654381
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8369542,
+          18.9384195
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "7fbad507-aeb4-46b4-98ae-2126ef122a68",
+        "name": "Intersection 245654386",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245654386
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8346296,
+          18.938707
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "3c5a681c-ed9d-41cb-9994-5029f4e475e2",
+        "name": "Intersection 245654423",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245654423
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8271411,
+          18.9390006
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "1f4b4e6b-0227-47d1-920a-3dcb2bda196b",
+        "name": "Intersection 245654519",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245654519
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8295327,
+          18.9417592
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "392b9b5f-3a42-4cac-b510-b92b5802d94e",
+        "name": "Intersection 245654525",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245654525
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8234071,
+          18.9425238
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "28c0ff4b-dbcd-4293-a4f1-4452fb7d1037",
+        "name": "Intersection 245654715",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245654715
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8290585,
+          18.9461837
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "26bcffdd-d8ff-45ad-8f2c-131169cad7c9",
+        "name": "Intersection 245655046",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245655046
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8202304,
+          18.9505948
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "903c5b8b-6ef0-473e-bc3e-b70c0c9e3344",
+        "name": "Intersection 245655214",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245655214
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8174415,
+          18.9528233
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "dec0c56a-75f7-4a99-b4ad-852cfbaa36cf",
+        "name": "Intersection 245655230",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245655230
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8340943,
+          18.9529382
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cf119823-a6d3-4642-82e5-3027dab910ab",
+        "name": "Intersection 245655253",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245655253
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8160857,
+          18.9528756
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8bab6e3c-3dd5-459b-b3bc-689743399e18",
+        "name": "Intersection 245655482",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245655482
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8080196,
+          18.9555966
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "3c2390ed-f873-4e91-88de-c4a0a65d362c",
+        "name": "Intersection 245655580",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245655580
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8159727,
+          18.9557353
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "5eba13ae-b707-4d01-b866-71b9577a5006",
+        "name": "Intersection 245655702",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245655702
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8155538,
+          18.9567596
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "a09d3a6e-76c4-441b-9663-806ca68bafc7",
+        "name": "Intersection 245655710",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245655710
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8124464,
+          18.9556745
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "5eb5f77e-e545-4f3e-84e3-a317008153fc",
+        "name": "Intersection 245655752",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245655752
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8100617,
+          18.9560119
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "fcc91235-dc9b-4a87-a4a9-9f1e0e6e4620",
+        "name": "Intersection 245655758",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245655758
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.816535,
+          18.9571303
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "2e2313e2-0bd1-4772-bad6-f73dd3a27020",
+        "name": "Intersection 245655771",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245655771
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8100622,
+          18.9561478
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "b42417ac-8003-42f4-8458-970c4f05abd2",
+        "name": "Intersection 245655778",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245655778
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8196988,
+          18.9573515
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "c3421124-b1ef-415b-b097-aa34e5d13548",
+        "name": "Intersection 245655876",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245655876
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8108785,
+          18.9581141
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "e9007958-138c-4454-9880-159ac9cdb459",
+        "name": "Intersection 245655908",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245655908
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.842675,
+          18.9572837
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "9295f535-438f-4dc4-bc9a-ec56aa8bf9b1",
+        "name": "Intersection 245655932",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245655932
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8262938,
+          18.9581277
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cd9f70c8-2396-4c38-9502-c14795afdc73",
+        "name": "Intersection 245656062",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245656062
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8100009,
+          18.9590811
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "d34bac83-590f-42a2-b903-e9af729c12bf",
+        "name": "Intersection 245656173",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245656173
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8438487,
+          18.9600451
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "a890ae17-eb7d-4315-b94b-58f23a6ece34",
+        "name": "Intersection 245656236",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245656236
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8093228,
+          18.9602543
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "10d1dc12-9f93-4820-a2b2-4368dd639827",
+        "name": "Intersection 245656245",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245656245
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8432445,
+          18.9601312
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "47cac548-454b-41ea-a717-595cdba857dd",
+        "name": "Intersection 245656387",
+        "road_names": [],
+        "num_lanes": 2,
+        "speed_limit_kmh": 50,
+        "zone": "general",
+        "osm_node_id": 245656387
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8174988,
+          18.9619442
+        ]
+      }
+    }
+  ]
+}
