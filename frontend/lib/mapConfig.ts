@@ -1,7 +1,5 @@
-export const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || '';
-
 export const MAP_CONFIG = {
-    style: 'mapbox://styles/mapbox/dark-v11',
+    style: 'https://tiles.openfreemap.org/styles/dark',
     center: [72.88, 19.08] as [number, number], // Mumbai
     zoom: 12,
     pitch: 45,
@@ -29,10 +27,11 @@ export function getCongestionLabel(percent: number): string {
     return 'Critical';
 }
 
-// Heatmap layer config for Mapbox
+// Heatmap layer config for MapLibre
 export const HEATMAP_LAYER = {
     id: 'congestion-heat',
     type: 'heatmap' as const,
+    source: 'congestion',
     paint: {
         'heatmap-weight': ['interpolate', ['linear'], ['get', 'congestion'], 0, 0, 100, 1],
         'heatmap-intensity': ['interpolate', ['linear'], ['zoom'], 0, 1, 15, 3],
@@ -52,6 +51,7 @@ export const HEATMAP_LAYER = {
 export const CIRCLE_LAYER = {
     id: 'congestion-points',
     type: 'circle' as const,
+    source: 'congestion',
     minzoom: 10,
     paint: {
         'circle-radius': ['interpolate', ['linear'], ['zoom'], 10, 4, 15, 12],

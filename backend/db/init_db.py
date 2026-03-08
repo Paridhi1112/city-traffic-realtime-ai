@@ -25,8 +25,9 @@ async def init_database():
         # Enable TimescaleDB extension
         await conn.execute(text("CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;"))
 
-        # Create all tables
+        # Create all tables (ensure imports are ready)
         await conn.run_sync(Base.metadata.create_all)
+        logger.info("Base.metadata.create_all executed")
 
         # Convert traffic_states to hypertable (idempotent check)
         try:

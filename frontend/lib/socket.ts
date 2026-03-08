@@ -12,6 +12,8 @@ export function createTrafficSocket(onMessage: (data: any) => void) {
         };
 
         ws.onmessage = (event) => {
+            // Ignore pong heartbeat responses
+            if (event.data === 'pong') return;
             try {
                 const data = JSON.parse(event.data);
                 onMessage(data);

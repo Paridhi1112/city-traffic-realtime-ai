@@ -1,8 +1,8 @@
 'use client';
-import { useEffect, useRef } from 'react';
-import mapboxgl from 'mapbox-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
-import { MAPBOX_TOKEN, MAP_CONFIG, CIRCLE_LAYER, HEATMAP_LAYER } from '@/lib/mapConfig';
+import React, { useEffect, useRef, useCallback } from 'react';
+import maplibregl from 'maplibre-gl';
+import 'maplibre-gl/dist/maplibre-gl.css';
+import { MAP_CONFIG, CIRCLE_LAYER, HEATMAP_LAYER } from '@/lib/mapConfig';
 
 interface CityMapProps {
     heatmapData?: any;
@@ -11,14 +11,25 @@ interface CityMapProps {
 
 export default function CityMap({ heatmapData, onIntersectionClick }: CityMapProps) {
     const mapContainer = useRef<HTMLDivElement>(null);
-    const map = useRef<mapboxgl.Map | null>(null);
+    const map = useRef<maplibregl.Map | null>(null);
+    const mapLoaded = useRef(false);
+    const pendingData = useRef<any>(null);
+
+    // Stable callback ref to avoid re-creating the map when the callback changes
+    const onClickRef = useRef(onIntersectionClick);
+    onClickRef.current = onIntersectionClick;
+
+    const applyData = useCallback((mapInstance: maplibregl.Map, data: any) => {
+        const source = mapInstance.getSource('congestion') as maplibregl.GeoJSONSource;
+        if (source) {
+            source.setData(data);
+        }
+    }, []);
 
     useEffect(() => {
         if (!mapContainer.current || map.current) return;
 
-        mapboxgl.accessToken = MAPBOX_TOKEN;
-
-        const mapInstance = new mapboxgl.Map({
+        const mapInstance = new maplibregl.Map({
             container: mapContainer.current,
             style: MAP_CONFIG.style,
             center: MAP_CONFIG.center,
@@ -27,23 +38,32 @@ export default function CityMap({ heatmapData, onIntersectionClick }: CityMapPro
             bearing: MAP_CONFIG.bearing,
         });
 
-        mapInstance.addControl(new mapboxgl.NavigationControl(), 'top-right');
-        mapInstance.addControl(new mapboxgl.ScaleControl(), 'bottom-left');
+        mapInstance.addControl(new maplibregl.NavigationControl(), 'top-right');
+        mapInstance.addControl(new maplibregl.ScaleControl(), 'bottom-left');
 
         mapInstance.on('load', () => {
-            // Add empty source — will be updated when data arrives
+            mapLoaded.current = true;
+
+            // Add the GeoJSON source
             mapInstance.addSource('congestion', {
                 type: 'geojson',
                 data: { type: 'FeatureCollection', features: [] },
             });
 
-            mapInstance.addLayer(HEATMAP_LAYER as any, 'waterway-label');
-            mapInstance.addLayer(CIRCLE_LAYER as any, 'waterway-label');
+            // Add layers — source is already set in the layer config
+            mapInstance.addLayer(HEATMAP_LAYER as any);
+            mapInstance.addLayer(CIRCLE_LAYER as any);
+
+            // If data arrived before the map loaded, apply it now
+            if (pendingData.current) {
+                applyData(mapInstance, pendingData.current);
+                pendingData.current = null;
+            }
 
             // Click handler for intersection points
-            mapInstance.on('click', 'congestion-points', (e) => {
+            mapInstance.on('click', 'congestion-points', (e: any) => {
                 if (e.features?.[0]?.properties?.intersection_id) {
-                    onIntersectionClick?.(e.features[0].properties.intersection_id);
+                    onClickRef.current?.(e.features[0].properties.intersection_id);
                 }
             });
 
@@ -59,34 +79,27 @@ export default function CityMap({ heatmapData, onIntersectionClick }: CityMapPro
         map.current = mapInstance;
 
         return () => {
+            mapLoaded.current = false;
             mapInstance.remove();
             map.current = null;
         };
-    }, [onIntersectionClick]);
+    }, []); // No dependencies — only create the map once
 
-    // Update heatmap data
+    // Update heatmap data whenever it changes
     useEffect(() => {
-        if (!map.current || !heatmapData) return;
-        const source = map.current.getSource('congestion') as mapboxgl.GeoJSONSource;
-        if (source) {
-            source.setData(heatmapData);
+        if (!heatmapData) return;
+
+        if (map.current && mapLoaded.current) {
+            applyData(map.current, heatmapData);
+        } else {
+            // Map hasn't loaded yet — store until it does
+            pendingData.current = heatmapData;
         }
-    }, [heatmapData]);
+    }, [heatmapData, applyData]);
 
     return (
         <div className="relative w-full h-full rounded-xl overflow-hidden border border-slate-700/50">
             <div ref={mapContainer} className="w-full h-full" />
-            {!MAPBOX_TOKEN && (
-                <div className="absolute inset-0 flex items-center justify-center bg-slate-900/90 backdrop-blur-sm">
-                    <div className="text-center p-8">
-                        <div className="text-4xl mb-4">🗺️</div>
-                        <h3 className="text-xl font-semibold text-white mb-2">Map Token Required</h3>
-                        <p className="text-slate-400 text-sm max-w-sm">
-                            Set <code className="px-1.5 py-0.5 bg-slate-800 rounded text-cyan-400">NEXT_PUBLIC_MAPBOX_TOKEN</code> in your .env file
-                        </p>
-                    </div>
-                </div>
-            )}
         </div>
     );
 }

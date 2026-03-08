@@ -27,6 +27,7 @@ export const api = {
   approveDecision: (id: string) => postApi(`/api/decisions/${id}/approve`),
   rejectDecision: (id: string) => postApi(`/api/decisions/${id}/reject`),
   getActiveEvents: () => fetchApi('/api/events/active'),
+  getUpcomingEvents: () => fetchApi('/api/events/upcoming'),
   getWeather: () => fetchApi('/api/weather/current'),
   getEmissions: () => fetchApi('/api/emissions/live'),
   getEmissionReport: () => fetchApi('/api/emissions/report'),

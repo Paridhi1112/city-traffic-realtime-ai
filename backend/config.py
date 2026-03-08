@@ -28,8 +28,7 @@ class Settings(BaseSettings):
     # ── Events ──
     ticketmaster_api_key: str = Field(default="", description="Ticketmaster key")
 
-    # ── Maps ──
-    mapbox_token: str = Field(default="", description="Mapbox access token")
+    # Mapping (MapLibre + OpenFreeMap - No Key Required)
 
     # ── Database ──
     database_url: str = Field(
@@ -57,6 +56,10 @@ class Settings(BaseSettings):
     def city_center(self) -> tuple[float, float]:
         s, w, n, e = self.city_bbox_tuple
         return ((s + n) / 2, (w + e) / 2)
+
+    def update_city(self, new_city: str, new_bbox: str):
+        self.city_name = new_city
+        self.city_bbox = new_bbox
 
     model_config = {"env_file": ".env", "env_file_encoding": "utf-8", "extra": "ignore"}
 

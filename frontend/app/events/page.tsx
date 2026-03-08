@@ -5,32 +5,31 @@ import { api } from '@/lib/api';
 import EventsPanel from '@/components/EventsPanel';
 import WeatherWidget from '@/components/WeatherWidget';
 import { useTrafficSocket } from '@/hooks/useTrafficSocket';
-import { CalendarDays, Plus } from 'lucide-react';
+import { CalendarDays } from 'lucide-react';
 
 export default function EventsPage() {
     const { cityState } = useTrafficSocket();
-    const [events, setEvents] = useState<any[]>([]);
+    const [weeklyData, setWeeklyData] = useState<any>(null);
     const [weather, setWeather] = useState<any>(null);
 
     useEffect(() => {
-        const fetch = async () => {
+        const fetchData = async () => {
             try {
-                const [ev, w] = await Promise.all([
-                    api.getActiveEvents(),
+                const [weekly, w] = await Promise.all([
+                    api.getUpcomingEvents(),
                     api.getWeather(),
                 ]);
-                setEvents(ev.events || []);
+                setWeeklyData(weekly);
                 setWeather(w);
             } catch (e) {
-                console.error(e);
+                console.error('Events fetch failed:', e);
             }
         };
-        fetch();
-        const interval = setInterval(fetch, 60000);
+        fetchData();
+        // Refresh every 5 minutes (events don't change that fast)
+        const interval = setInterval(fetchData, 300000);
         return () => clearInterval(interval);
     }, []);
-
-    const activeEvents = cityState?.active_events || events;
 
     return (
         <div className="p-4 lg:p-6 space-y-6">
@@ -46,10 +45,16 @@ export default function EventsPage() {
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div className="glass-card p-4">
-                    <EventsPanel events={activeEvents} />
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                {/* Events Calendar — takes 2 columns */}
+                <div className="lg:col-span-2 glass-card p-4">
+                    <EventsPanel
+                        weeklyData={weeklyData}
+                        activeEvents={cityState?.active_events}
+                    />
                 </div>
+
+                {/* Right sidebar — weather */}
                 <div className="space-y-4">
                     <WeatherWidget weather={cityState?.weather || weather} />
                     <div className="glass-card p-4">

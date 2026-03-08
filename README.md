@@ -60,7 +60,7 @@ Every 60s APScheduler triggers →
 ## Frontend Pages
 
 - **Dashboard** (`/`) — KPIs, charts, top hotspots, weather, emissions, AI decisions
-- **Live Map** (`/map`) — Mapbox GL heatmap with intersection details
+- **Live Map** (`/map`) — MapLibre GL heatmap with intersection details
 - **AI Decisions** (`/decisions`) — Live decisions + paginated history
 - **Emissions** (`/emissions`) — CO₂ tracking and recommendations  
 - **Events** (`/events`) — City events and weather impact
@@ -101,5 +101,5 @@ Restart the system. The OSM loader will automatically fetch intersections for th
 
 **Backend:** Python 3.11, FastAPI, APScheduler, Redis, PostgreSQL + TimescaleDB, SQLAlchemy, httpx  
 **AI:** Kimi API (moonshot-v1-128k), XGBoost, Scikit-learn  
-**Frontend:** Next.js 14, TailwindCSS, Mapbox GL JS, Recharts, Socket.IO  
+**Frontend:** Next.js 14, TailwindCSS, MapLibre GL JS, Recharts, Socket.IO  
 **Infra:** Docker Compose, Nginx

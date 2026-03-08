@@ -2,8 +2,9 @@
 Traffic API Routes — city state, heatmap, intersection details.
 """
 
-from fastapi import APIRouter, Query
+from fastapi import APIRouter, Query, HTTPException
 from datetime import datetime, timezone
+from pydantic import BaseModel
 
 from db.redis_manager import get_redis, RedisStateManager
 
@@ -32,6 +33,22 @@ async def get_city_state():
     }
 
 
+class CitySwitchRequest(BaseModel):
+    city_name: str
+    city_bbox: str
+
+
+@router.post("/city")
+async def change_city(req: CitySwitchRequest):
+    """Switch the active city globally."""
+    try:
+        from main import reload_city_context
+        await reload_city_context(req.city_name, req.city_bbox)
+        return {"status": "success", "message": f"Switched to {req.city_name}"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @router.get("/intersection/{intersection_id}")
 async def get_intersection(intersection_id: str):
     """Get traffic state for a specific intersection."""
@@ -50,7 +67,7 @@ async def get_intersection(intersection_id: str):
 
 @router.get("/heatmap")
 async def get_heatmap():
-    """Return GeoJSON for Mapbox heatmap layer."""
+    """Return GeoJSON for dynamic map heatmap layer."""
     try:
         r = await get_redis()
         rsm = RedisStateManager(r)

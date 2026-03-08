@@ -8,6 +8,7 @@ from datetime import datetime, timezone
 from typing import Set
 
 from fastapi import WebSocket, WebSocketDisconnect
+from db.redis_manager import get_redis, RedisStateManager
 
 logger = logging.getLogger(__name__)
 
@@ -29,6 +30,20 @@ async def websocket_endpoint(websocket: WebSocket):
             "timestamp": datetime.now(timezone.utc).isoformat(),
         })
 
+        # Fetch and send immediate initial state
+        try:
+            r = await get_redis()
+            rsm = RedisStateManager(r)
+            state = await rsm.get_city_state()
+            if state:
+                await websocket.send_text(json.dumps({
+                    "type": "city_state_update",
+                    "data": state,
+                    "timestamp": datetime.now(timezone.utc).isoformat(),
+                }, default=str))
+        except Exception as e:
+            logger.error(f"Failed to send initial city state: {e}")
+
         # Keep connection alive and handle incoming messages
         while True:
             data = await websocket.receive_text()
@@ -45,6 +60,7 @@ async def websocket_endpoint(websocket: WebSocket):
 
 async def broadcast(message: dict):
     """Broadcast message to all connected WebSocket clients."""
+    global _connections
     if not _connections:
         return
 

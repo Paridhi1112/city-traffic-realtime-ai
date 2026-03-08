@@ -105,6 +105,69 @@ async def lifespan(app: FastAPI):
     logger.info("Shutdown complete")
 
 
+async def reload_city_context(new_city: str, new_bbox: str):
+    """
+    Dynamically change the active city and restart all background processes
+    without taking the FastAPI server down.
+    """
+    global _intersections
+    settings.update_city(new_city, new_bbox)
+    
+    logger.info("=" * 60)
+    logger.info(f"  Dynamic City Switch Initiated: {new_city}")
+    logger.info("=" * 60)
+
+    # 1. Shutdown existing scheduler jobs cleanly
+    try:
+        from scheduler.polling_scheduler import shutdown_scheduler, setup_scheduler
+        shutdown_scheduler()
+    except Exception as e:
+        logger.warning(f"Failed to shutdown scheduler: {e}")
+
+    # 2. Reload intersections for the new bounding box
+    try:
+        from data_fetchers.osm_loader import load_intersections, get_intersection_coords
+        from data_fetchers.osm_loader import GEOJSON_PATH
+        import os
+        
+        # force bust the file cache
+        if GEOJSON_PATH.exists():
+            os.remove(GEOJSON_PATH)
+
+        geojson = await load_intersections()
+        _intersections = get_intersection_coords(geojson)
+        logger.info(f"Dynamically loaded {len(_intersections)} intersections for {new_city}")
+
+        # Seed new intersections to DB
+        await _seed_intersections(_intersections)
+    except Exception as e:
+        logger.error(f"Failed to load new intersections: {e}")
+
+    # 3. Rebuild city graph
+    try:
+        from city_graph.graph_builder import build_graph
+        graph = build_graph(_intersections)
+        logger.info(f"New city graph built: {graph.number_of_nodes()} nodes")
+    except Exception as e:
+        logger.warning(f"New graph build failed: {e}")
+
+    # 4. Restart Scheduler + trigger manual refresh
+    try:
+        from scheduler.jobs import set_ws_broadcast
+        set_ws_broadcast(broadcast)
+        setup_scheduler(_intersections)
+        logger.info("Scheduler restarted with new city bounds")
+        
+        from data_fetchers.data_aggregator import aggregate_all_data
+        if _intersections:
+            await aggregate_all_data(_intersections)
+            logger.info("Forced initial data fetch for new city complete")
+            
+    except Exception as e:
+        logger.error(f"Failed to restart background jobs for new city: {e}")
+
+
+
 async def _seed_intersections(intersections: list[dict]):
     """Seed intersection data to database."""
     try:
@@ -242,3 +305,12 @@ async def get_active_incidents():
     except Exception:
         pass
     return {"incidents": []}
+
+
+if __name__ == "__main__":
+    import uvicorn
+    import os
+    
+    # Run the server
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)
