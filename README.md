@@ -46,15 +46,108 @@ docker compose up -d
 Set `SIMULATION_MODE=true` (default) to run without real API keys.
 All fetchers generate realistic fake data so the full pipeline is always demo-able.
 
-## Data Flow
+## Data Flow Architecture
 
+The Urban Traffic Brain relies on a synchronous ETL pipeline that fetches live data, processes it via ML models, stores it, and streams the unified state to the frontend.
+
+```mermaid
+graph TD
+    %% External APIs
+    subgraph Data Sources
+        TomTom[TomTom API]
+        HERE[HERE Traffic]
+        Weather[Open-Meteo]
+        OSM[Overpass / OSM]
+        Events[Ticketmaster / Holidays]
+    end
+
+    %% Backend Services
+    subgraph Backend FastAPI
+        Aggregator[Data Aggregator]
+        Schedule((APScheduler\n60s Loop))
+        
+        %% Machine Learning Layer
+        subgraph ML Engine
+            XGB[XGBoost Predictor]
+            LLM[Kimi AI Agent]
+        end
+        
+        API[REST API Endpoints]
+        WS[WebSocket Stream]
+    end
+
+    %% Databases
+    subgraph Storage
+        Redis[(Redis Cache)]
+        PG[(PostgreSQL /\nTimescaleDB)]
+    end
+
+    %% Frontend
+    subgraph Next.js Client
+        Dashboard[Dashboards & KPI]
+        Map[MapLibre GL Map]
+    end
+
+    %% Data Flow Connections
+    Schedule -->|Triggers| Aggregator
+    TomTom -->|Traffic Speeds| Aggregator
+    HERE -->|Incidents & Jams| Aggregator
+    Weather -->|Live Weather| Aggregator
+    OSM -->|Static Intersections| Aggregator
+    Events -->|City Events| Aggregator
+
+    Aggregator -->|Store Live State| Redis
+    Redis -->|Hydrate Context| XGB
+    Redis -->|Prompt Context| LLM
+    
+    XGB -->|15min Forecasts| PG
+    LLM -->|Traffic Decisions| PG
+    
+    Redis -->|Current State| WS
+    PG -->|History & AI| API
+    
+    WS -->|Live Updates| Map
+    WS -->|Live Updates| Dashboard
+    API -->|Historical Data| Dashboard
+
+    classDef source fill:#1e293b,stroke:#3b82f6,color:#fff;
+    classDef backend fill:#0f172a,stroke:#8b5cf6,stroke-width:2px,color:#fff;
+    classDef storage fill:#1e1b4b,stroke:#ec4899,color:#fff;
+    classDef frontend fill:#312e81,stroke:#06b6d4,color:#fff;
+
+    class TomTom,HERE,Weather,OSM,Events source;
+    class Aggregator,Schedule,XGB,LLM,API,WS backend;
+    class Redis,PG storage;
+    class Dashboard,Map frontend;
 ```
-Every 60s APScheduler triggers →
-  1. Data Collection (parallel async: TomTom, HERE, Weather, Events, GTFS)
-  2. Data Aggregation → unified TrafficState per intersection → Redis
-  3. XGBoost Prediction → T+15/30/60 min congestion forecasts
-  4. Kimi AI Decision → structured JSON decisions → PostgreSQL
-  5. WebSocket Push → live update to all connected dashboards
+
+## Folder Structure
+
+The repository is logically separated into the `frontend/` (Next.js React app) and `backend/` (FastAPI Python server) directories.
+
+```text
+urban-traffic-brain/
+├── docker-compose.yml       # Orchestrates app, postgres, redis, nginx
+├── nginx.conf               # Reverse proxy routing (port 80 -> 3000/8000)
+├── .env                     # Shared environment variables
+│
+├── frontend/                # Next.js 14 Web Application
+│   ├── app/                 # App router pages (/, /map, /events, etc.)
+│   ├── components/          # Reusable React UI components (CityMap, Alerts)
+│   ├── hooks/               # Custom React hooks (useTrafficSocket)
+│   ├── lib/                 # Utilities (api client, map config, styles)
+│   └── public/              # Static assets
+│
+└── backend/                 # FastAPI Python Server
+    ├── api/
+    │   ├── routes/          # REST endpoints (traffic, events, decisions)
+    │   └── websocket.py     # Live data socket streaming
+    ├── data_fetchers/       # Scripts to call external APIs (TomTom, HERE)
+    ├── db/                  # SQLAlchemy models and Redis state manager
+    ├── models/              # Pydantic schema schemas
+    ├── scheduler/           # APScheduler configuration and data jobs
+    ├── main.py              # FastAPI application entry point
+    └── config.py            # Global settings loader
 ```
 
 ## Frontend Pages
